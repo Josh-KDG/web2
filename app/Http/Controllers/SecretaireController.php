@@ -38,7 +38,6 @@ class SecretaireController extends Controller
         public function store(SecretaireFormRequest $request)
         {
             $validated = $request->validated(); // Récupère les données validées
-
             // Création de la personne
             $personne = Personne::create([
                 'nom' => $validated['utilisateurs_enregistres']['personne']['nom'],

@@ -25,8 +25,8 @@
         @foreach ($Secretaires as $Secretaire)
         <tr>
             <td>{{ $Secretaire->id }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->Personne->nom }}</td>
-            <td>{{ $Secretaire->utilisateurEnregistre->personne->prenom }}</td>
+            <td>{{ $Secretaire->UtilisateurEnregistre->personne->nom }}</td>
+            <td>{{ $Secretaire->UtilisateurEnregistre->personne->prenom }}</td>
             <td>{{ $Secretaire->bureau }}</td>
             <td>{{ $Secretaire->UtilisateurEnregistre->role }}</td>
             <td>{{ $Secretaire->UtilisateurEnregistre->Email }}</td>
