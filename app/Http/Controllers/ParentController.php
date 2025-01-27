@@ -6,12 +6,12 @@ use App\Models\Eleve;
 use App\Models\Personne;
 use App\Models\Personnes;
 use App\Models\ParentEleve;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UtilisateurEnregistre;
 use App\Models\UtilisateursEnregistres;
-use App\Http\Requests\admin\ParentFormRequest;
+use Illuminate\Support\Facades\Request;
+use App\Http\Requests\ParentFormRequest;
 
 class ParentController extends Controller
 {
@@ -38,21 +38,21 @@ class ParentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(ParentFormRequest $request)
     {
 
         $validated = $request->validated();
-
-
+        dd($validated);
         $personne= Personne::create([
             'nom'=>$validated['nom'],
             'prenom'=>$validated['prenom'],
-            'Email'=>$validated['Email'],
         ]);
 
         $utilisateursEnregistres= UtilisateurEnregistre::create([
             'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+            'Email'=>$validated['Email'],
             'personne_id'=>$personne->id,
+            'role' => $validated['role'],
         ]);
 
         $eleve= Eleve::create([
@@ -65,7 +65,7 @@ class ParentController extends Controller
 
 
 
-        return redirect()->route('admin.Parent.index')->with('succes', "l'eleve à été ajouté avec succès");
+        return redirect()->route('admin.Parent.FormErPA')->with('succes', "l'eleve à été ajouté avec succès");
     }
 
 

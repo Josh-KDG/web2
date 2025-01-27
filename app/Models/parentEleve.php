@@ -8,7 +8,7 @@ class parentEleve extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['eleve_id', 'utilisateur_enregistre_id'];
+    protected $fillable = ['eleve_id', 'utilisateurs_enregistres_id'];
 
     // Relation vers UtilisateurEnregistre
     public function utilisateurEnregistre()

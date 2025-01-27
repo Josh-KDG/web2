@@ -95,6 +95,16 @@ class StoreRequest extends FormRequest
 
             ]);
         }
+        if ($this->is('Parent/*')) {
+            $rules = array_merge($rules, [
+               'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'Email' => 'required|email',
+            'Mot_de_passe' => 'required|min:8',
+            'role' => 'required|in:eleve, parent, enseignant, directeur, secretaire, intendant, surveillant',
+
+            ]);
+        }
 
         return $rules;
     }

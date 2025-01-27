@@ -28,6 +28,7 @@
             <td>{{ $Parent->UtilisateurEnregistre->personne->nom }}</td>
             <td>{{ $Parent->UtilisateurEnregistre->personne->prenom }}</td>
             <td>{{ $Parent->UtilisateurEnregistre->email }}</td>
+            <td>{{ $Parent->UtilisateurEnregistre->role }}</td>
             <td>{{ $Parent->UtilisateurEnregistre->Mot_de_passe }}</td>
             <td>
                 <a href="{{ route('admin.Parent.edit', $Parent->id) }}" class="btn btn-warning">Modifier</a>

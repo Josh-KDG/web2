@@ -55,7 +55,7 @@ class UtilisateurEnregistre extends Model implements Authenticatable
     }
     public function parent()
     {
-        return $this->hasMany(parentEleve::class, 'utilisateur_enregistre_id');
+        return $this->hasMany(parentEleve::class, 'utilisateurs_enregistres_id');
     }
     public function directeur()
     {
