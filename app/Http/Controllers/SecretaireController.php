@@ -37,7 +37,28 @@ class SecretaireController extends Controller
      */
         public function store(SecretaireFormRequest $request)
         {
-            $validated = $request->validated(); // Récupère les données validées
+            $validated = $request->validated();
+
+
+            $personne= Personne::create([
+                'nom'=>$validated['nom'],
+                'prenom'=>$validated['prenom'],
+            ]);
+
+            $utilisateursEnregistres= UtilisateurEnregistre::create([
+                'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+                'Email'=>$validated['Email'],
+                'personne_id'=>$personne->id,
+                'role' => $validated['role'],
+
+            ]);
+
+            Secretaire::create([
+                'bureau' => $validated['bureau'],
+                'utilisateurs_enregistres_id' => $utilisateursEnregistres->id,
+            ]);
+
+           /* $validated = $request->validated(); // Récupère les données validées
             // Création de la personne
             $personne = Personne::create([
                 'nom' => $validated['utilisateurs_enregistres']['personne']['nom'],
@@ -56,7 +77,7 @@ class SecretaireController extends Controller
             Secretaire::create([
                 'bureau' => $validated['Secretaire']['bureau'],
                 'utilisateurs_enregistres_id' => $utilisateursEnregistres->id, // L'ID de l'utilisateur enregistré
-            ]);
+            ]);*/
 
             return redirect()->route('admin.Secretaire.index')->with('success', 'Le secrétaire a été ajouté avec succès.');
         }
@@ -73,9 +94,13 @@ class SecretaireController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $Secretaires = Secretaire::findOrFail($id);// 1. Récupérer l'élève par son ID.
+        $UtilisateursEnregistres = $Secretaires->UtilisateursEnregistres;// 2. Charger les informations d'utilisateur enregistrées liées à cet élève.
+        $UtilisateursEnregistres = UtilisateurEnregistre::findOrFail($id);// 3. Rechercher l'utilisateur enregistré par son ID.
+        $personne = $UtilisateursEnregistres->personne;// 4. Charger les informations de la personne liée à cet utilisateur enregistré.
+        return view('admin.property.FormSE', compact('Secretaires','UtilisateursEnregistres', 'personne'));
     }
 
     /**

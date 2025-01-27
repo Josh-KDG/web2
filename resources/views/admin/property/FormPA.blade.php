@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row">
-        @include('share.imput',['class'=>'col', 'name'=>'Email', 'label'=>'Email', 'value'=>$personne->email ?? ''])
+        @include('share.imput',['class'=>'col', 'name'=>'email', 'label'=>'Email', 'value'=>$utilisateursEnregistres->email ?? ''])
         @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
 
     </div>

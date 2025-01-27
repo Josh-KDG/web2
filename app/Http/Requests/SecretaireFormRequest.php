@@ -16,25 +16,26 @@ class SecretaireFormRequest extends FormRequest
     {
         return [
             // Validation des informations utilisateur
-            'utilisateurs_enregistres.personne.nom' => 'required|string|max:255',
-            'utilisateurs_enregistres.personne.prenom' => 'required|string|max:255',
-            'utilisateurs_enregistres.Email' => 'required|email',
-            'utilisateurs_enregistres.Mot_de_passe' => 'required|min:8',
-            'utilisateurs_enregistres.role' => 'required|in:eleve, parent, enseignant, directeur, secretaire, intendant, surveillant',
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'Email' => 'required|email',
+            'Mot_de_passe' => 'required|min:8',
+            'role' => 'required|in:eleve, parent, enseignant, directeur, secretaire, intendant, surveillant',
 
             // Validation spécifique au secrétaire
-            'Secretaire.bureau' => 'required|integer|max:2', // Validation de l'attribut 'bureau' du secrétaire
+            'bureau' => 'required|integer|max:2', // Validation de l'attribut 'bureau' du secrétaire
         ];
     }
 
     public function messages(): array
     {
         return [
-            'utilisateurs_enregistres.personne.nom.required' => 'Le nom est obligatoire.',
-            'utilisateurs_enregistres.personne.prenom.required' => 'Le prénom est obligatoire.',
-            'utilisateurs_enregistres.Email.required' => 'L\'email est obligatoire.',
-            'utilisateurs_enregistres.Mot_de_passe.required' => 'Le mot de passe est obligatoire.',
-            'Secretaire.bureau.required' => 'Le bureau est obligatoire.',
+            'nom.required' => 'Le nom est obligatoire.',
+            'prenom.required' => 'Le prénom est obligatoire.',
+            'Email.required' => 'L\'email est obligatoire.',
+            'Mot_de_passe.required' => 'Le mot de passe est obligatoire.',
+            'bureau.required' => 'Le bureau est obligatoire.',
+            'role.required' => 'Le bureau est obligatoire.',
         ];
     }
 }

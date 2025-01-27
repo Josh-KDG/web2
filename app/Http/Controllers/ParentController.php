@@ -47,10 +47,10 @@ class ParentController extends Controller
         $personne= Personne::create([
             'nom'=>$validated['nom'],
             'prenom'=>$validated['prenom'],
+            'Email'=>$validated['Email'],
         ]);
 
         $utilisateursEnregistres= UtilisateurEnregistre::create([
-            'email'=>$validated['Email'],
             'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
             'personne_id'=>$personne->id,
         ]);
