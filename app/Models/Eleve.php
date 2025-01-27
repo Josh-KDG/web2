@@ -12,7 +12,7 @@ class Eleve extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['INE', 'classe', 'utilisateurs_enregistres_id', 'date_de_naissance'];
+    protected $fillable = ['INE', 'classe','sexe', 'utilisateurs_enregistres_id', 'date_de_naissance'];
 
 
     //Function to generate the unique code
@@ -34,6 +34,6 @@ class Eleve extends Model
 
     public function parent()
     {
-        return $this->hasMany(parentEleve::class, 'eleve_id');
+        return $this->hasMany(parentEleve::class);
     }
 }

@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        @include('share.imput',['class'=>'col', 'name'=>'date', 'label'=>'Datedenaissaince', 'value'=>$Eleves->date_de_naissaince ?? ''])
+        @include('share.imput',['class'=>'col', 'name'=>'date', 'label'=>'Date de naissaince', 'value'=>$Eleves->date_de_naissaince ?? ''])
         @include('share.imput', ['class' => 'col', 'name' => 'sexe', 'label' => 'Sexe', 'value' => $Eleves->sexe ?? ''])
 
     </div>
@@ -28,6 +28,7 @@
     </div>
 
     <div class="row">
+        @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$UtilisateursEnregistres->role ?? ''])
         @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
     </div>
 

@@ -7,6 +7,7 @@ use App\Models\Personne;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use App\Models\UtilisateurEnregistre;
+use App\Http\Requests\EleveFormRequest;
 
 class EleveController extends Controller
 {
@@ -35,7 +36,7 @@ class EleveController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(EleveFormRequest $request)
     {
 
         $validated = $request->validated();
@@ -47,14 +48,16 @@ class EleveController extends Controller
         ]);
 
         $utilisateursEnregistres= UtilisateurEnregistre::create([
-            'email'=>$validated['Email'],
-            'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
-            'personne_id'=>$personne->id,
+           'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+                'Email'=>$validated['Email'],
+                'personne_id'=>$personne->id,
+                'role' => $validated['role'],
         ]);
 
         Eleve::create([
             'INE'=>$validated['INE'],
             'classe'=>$validated['classe'],
+            'sexe'=>$validated['sexe'],
             'date_de_naissaince'=>$validated['date_de_naissaince'],
             'utilisateurs_enregistres_id'=>$utilisateursEnregistres->id,
         ]);

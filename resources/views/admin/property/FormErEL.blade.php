@@ -30,12 +30,13 @@
             <td>{{ $Eleve->utilisateurEnregistre->personne->prenom }}</td>
             <td>{{ $Eleve->classe }}</td>
             <td>{{ $Eleve->utilisateurEnregistre->email }}</td>
+            <td>{{ $Eleve->utilisateurEnregistre->role }}</td>
             <td>{{ $Eleve->INE }}</td>
             <td>{{ $Eleve->Sexe }}</td>
             <td>{{ $Eleve->date_de_naissance }}</td>
             <td>
-                <a href="{{ route('admin.Directeur.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
-                <form action="{{ route('admin.Directeur.destroy', $eleve->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.Eleve.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
+                <form action="{{ route('admin.Eleve.destroy', $eleve->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>
