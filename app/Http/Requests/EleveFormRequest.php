@@ -12,7 +12,7 @@ class EleveFormRequest extends FormRequest
         // Validation des informations utilisateur
         'nom' => 'required|string|max:255',
         'prenom' => 'required|string|max:255',
-        'prenom' => 'required|string|max:255',
+        'classe' => 'required|integer|max:255',
         'date_de_naissance' => 'required|date',
         'Email' => 'required|email',
         'Mot_de_passe' => 'required|min:8',

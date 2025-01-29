@@ -12,7 +12,7 @@ class Eleve extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['INE', 'classe','sexe', 'utilisateurs_enregistres_id', 'date_de_naissance'];
+    protected $fillable = ['INE', 'classe','sexe', 'utilisateur_enregistre_id', 'date_de_naissance'];
 
 
     //Function to generate the unique code

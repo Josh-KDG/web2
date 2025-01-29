@@ -12,7 +12,7 @@
     @if ($type == 'text' || $type == 'password' || $type == 'email')
         <input class="form-control @error($name) is-invalid @enderror" type="{{ $type }}" id="{{ $name }}" name="{{ $name }}" value="{{ old($name, $value) }}">
     @elseif ($name === 'sexe')
-    <select class="form-select @error($name) is-invalid @enderror" id="{{ $name }}" name="{{ $name }}" required>
+    <select class="form-select @error($name) is-invalid @enderror" type="{{ $type }}" id="{{ $name }}" name="{{ $name }}" required>
         <option value="F" @selected(old($name) == 'F' || $value == 'F')>Féminin</option>
         <option value="M" @selected(old($name) == 'M' || $value == 'M')>Masculin</option>
     </select>
@@ -27,7 +27,7 @@
         <option value="tle" @selected(old($name) == 'tle' || $value == 'tle')>Terminal</option>
     </select>
 @elseif ($name === 'role')
-    <select class="form-select @error($name) is-invalid @enderror" id="{{ $name }}" name="{{ $name }}" required>
+    <select class="form-select @error($name) is-invalid @enderror" type="{{ $type }}" id="{{ $name }}" name="{{ $name }}" required>
         <option value="eleve" @selected(old($name) == 'eleve' || $value == 'eleve')>Élève</option>
         <option value="parent" @selected(old($name) == 'parent' || $value == 'parent')>Parent</option>
         <option value="enseignant" @selected(old($name) == 'enseignant' || $value == 'enseignant')>Enseignant</option>

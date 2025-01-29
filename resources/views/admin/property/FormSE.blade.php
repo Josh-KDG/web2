@@ -19,11 +19,11 @@
 
          <div class="row">
              @include('share.imput',['class'=>'col', 'name'=>'bureau', 'label'=>'Bureau', 'value'=>$Secretaires->bureau ?? ''])
-             @include('share.imput',['class'=>'col', 'name'=>'email', 'label'=>'Email', 'value'=>$utilisateursEnregistres->email ?? ''])
+             @include('share.imput',['class'=>'col', 'name'=>'email', 'label'=>'Email', 'value'=>$UtilisateursEnregistres->email ?? ''])
          </div>
 
          <div class="row">
-             @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$utilisateursEnregistres->role ?? ''])
+             @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$UtilisateursEnregistres->role ?? ''])
              @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
          </div>
 

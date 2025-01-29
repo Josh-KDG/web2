@@ -16,7 +16,7 @@ class EleveController extends Controller
      */
     public function index()
     {
-            $Eleves = Eleve::with('utilisateursEnregistres.personne')->paginate(10);
+            $Eleves = Eleve::with('utilisateurEnregistre.personne')->paginate(10);
 
             return view('admin.property.FormErEL', compact('Eleves'));
 
@@ -37,35 +37,46 @@ class EleveController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(EleveFormRequest $request)
-    {
+{
+    $validated = $request->validated();
 
-        $validated = $request->validated();
+    // Génération de l'INE
+    $year = now()->year; // Année en cours
+    $sex = $validated['sexe']; // Sexe de l'élève
+    $lastEleve = Eleve::latest()->first(); // Récupère l'élève ayant le plus grand ID
 
+    // Si aucun élève n'existe encore, démarrer à 100, sinon augmenter le nombre
+    $randomNumber = $lastEleve ? (intval(substr($lastEleve->INE, 2, 3)) + 1) : 100;
 
-        $personne= Personne::create([
-            'nom'=>$validated['nom'],
-            'prenom'=>$validated['prenom'],
-        ]);
+    // Construire l'INE
+    $INE = "EC" . str_pad($randomNumber, 3, '0', STR_PAD_LEFT) . $year . $sex;
 
-        $utilisateursEnregistres= UtilisateurEnregistre::create([
-           'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
-                'Email'=>$validated['Email'],
-                'personne_id'=>$personne->id,
-                'role' => $validated['role'],
-        ]);
+    // Créer la personne
+    $personne = Personne::create([
+        'nom' => $validated['nom'],
+        'prenom' => $validated['prenom'],
+    ]);
 
-        Eleve::create([
-            'INE'=>$validated['INE'],
-            'classe'=>$validated['classe'],
-            'sexe'=>$validated['sexe'],
-            'date_de_naissaince'=>$validated['date_de_naissaince'],
-            'utilisateurs_enregistres_id'=>$utilisateursEnregistres->id,
-        ]);
+    // Créer l'utilisateur enregistré
+    $utilisateursEnregistres = UtilisateurEnregistre::create([
+        'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+        'Email' => $validated['Email'],
+        'personne_id' => $personne->id,
+        'role' => $validated['role'],
+    ]);
 
+    // Créer l'élève
+    Eleve::create([
+        'INE' => $INE,
+        'classe' => $validated['classe'],
+        'sexe' => $validated['sexe'],
+        'date_de_naissance' => $validated['date_de_naissance'],
+        'utilisateur_enregistre_id' => $utilisateursEnregistres->id,
+    ]);
 
+    return redirect()->route('admin.Eleve.index')->with('succes', "L'élève a été ajouté avec succès");
+}
 
-        return redirect()->route('admin.Eleve.index')->with('succes', "l'eleve à été ajouté avec succès");
-    }
     /**
      * Display the specified resource.
      */

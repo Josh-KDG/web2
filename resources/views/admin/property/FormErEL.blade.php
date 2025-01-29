@@ -15,7 +15,6 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Classe</th>
-            <th>Email</th>
             <th>INE</th>
             <th>Date de naissance</th>
             <th>Sexe</th>
@@ -29,14 +28,12 @@
             <td>{{ $Eleve->utilisateurEnregistre->personne->nom }}</td>
             <td>{{ $Eleve->utilisateurEnregistre->personne->prenom }}</td>
             <td>{{ $Eleve->classe }}</td>
-            <td>{{ $Eleve->utilisateurEnregistre->email }}</td>
-            <td>{{ $Eleve->utilisateurEnregistre->role }}</td>
-            <td>{{ $Eleve->INE }}</td>
-            <td>{{ $Eleve->Sexe }}</td>
+            <td>{{ $Eleve->utilisateurEnregistre->Email }}</td>
             <td>{{ $Eleve->date_de_naissance }}</td>
+            <td>{{ $Eleve->Sexe }}</td> <!-- Afficher le sexe de l'élève -->
             <td>
-                <a href="{{ route('admin.Eleve.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
-                <form action="{{ route('admin.Eleve.destroy', $eleve->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.Eleve.edit', $Eleve->id) }}" class="btn btn-warning">Modifier</a>
+                <form action="{{ route('admin.Eleve.destroy', $Eleve->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>
@@ -46,6 +43,7 @@
         @endforeach
     </tbody>
 </table>
+
 
 {{ $Eleves->links() }}
 @endsection

@@ -18,9 +18,8 @@
     </div>
 
     <div class="row">
-        @include('share.imput',['class'=>'col', 'name'=>'date', 'label'=>'Date de naissaince', 'value'=>$Eleves->date_de_naissaince ?? ''])
+        @include('share.imput',['class'=>'col', 'name'=>'date_de_naissance', 'label'=>'Date de naissance', 'value'=>$Eleves->date_de_naissaince ?? ''])
         @include('share.imput', ['class' => 'col', 'name' => 'sexe', 'label' => 'Sexe', 'value' => $Eleves->sexe ?? ''])
-
     </div>
     <div class="row">
         @include('share.imput',['class'=>'col', 'name'=>'classe', 'label'=>'Classe', 'value'=>$Eleves->classe ?? ''])
@@ -30,6 +29,7 @@
     <div class="row">
         @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$UtilisateursEnregistres->role ?? ''])
         @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
+
     </div>
 
     <button class="btn btn-primary">
@@ -39,5 +39,7 @@
             Créer
         @endif
     </button>
+
 </form>
+
 @endsection

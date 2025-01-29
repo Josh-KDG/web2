@@ -14,8 +14,8 @@ return new class extends Migration
 
         Schema::create('eleves', function (Blueprint $table) {
             $table->id();
-            $table->string('INE')->unique();
-            $table->string('Sexe')->unique();
+            $table->string('INE');
+            $table->string('Sexe');
             $table->enum('classe', ['6','5','4','3','2','1','tle']);
             $table->date('date_de_naissance');
             $table->unsignedBigInteger('utilisateur_enregistre_id');

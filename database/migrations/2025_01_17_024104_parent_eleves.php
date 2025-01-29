@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('parent_eleves', function (Blueprint $table) {
             $table->id();
             // Ajout de la clé étrangère pour 'utilisateur_enregistre'
-            $table->unsignedBigInteger('utilisateur_enregistre_id');
+            $table->unsignedBigInteger('utilisateurs_enregistres_id');
             $table->foreign('utilisateurs_enregistres_id')
                 ->references('id')->on('utilisateurs_enregistres')
                 ->onDelete('cascade');
