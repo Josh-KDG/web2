@@ -17,7 +17,6 @@
             <th>Bureau</th>
             <th>Rôle</th>
             <th>Email</th>
-            <th>Mot de passe</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,12 +24,11 @@
         @foreach ($Secretaires as $Secretaire)
         <tr>
             <td>{{ $Secretaire->id }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->personne->nom }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->personne->prenom }}</td>
+            <td>{{ $Secretaire->utilisateurEnregistre->personne->nom }}</td>
+            <td>{{ $Secretaire->utilisateurEnregistre->personne->prenom }}</td>
             <td>{{ $Secretaire->bureau }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->role }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->Email }}</td>
-            <td>{{ $Secretaire->UtilisateurEnregistre->Mot_de_passe }}</td>
+            <td>{{ $Secretaire->utilisateurEnregistre->role }}</td>
+            <td>{{ $Secretaire->utilisateurEnregistre->Email }}</td>
             <td>
                 <a href="{{ route('admin.Secretaire.edit', $Secretaire->id) }}" class="btn btn-warning">Modifier</a>
                 <form action="{{ route('admin.Directeur.destroy', $Secretaire->id) }}" method="POST" style="display:inline;">

@@ -1,13 +1,13 @@
 @extends('layouts.base.baseEleve')
 
-@section('title', $Surveillants->exists ? "Enregistrer un nouveau Directeur" : "Enregistrer un Surveillant")
+@section('title', $Directeurs->exists ? "Enregistrer un nouveau Directeur" : "Enregistrer un Directeur")
 
 @section('contenuEleve')
 
 <h1>@yield('title')</h1>
-<form action="{{ route($Surveillants->exists ? 'admin.Surveillant.update' : 'admin.Surveillant.store', $Surveillants)}}" method="POST">
+<form action="{{ route($Directeurs->exists ? 'admin.Directeur.update' : 'admin.Directeur.store', $Directeurs)}}" method="POST">
     @csrf
-    @method($Surveillants->exists ? 'put' : 'post')
+    @method($Directeurs->exists ? 'put' : 'post')
 
     <div class="row">
         <div class="col">
@@ -16,14 +16,15 @@
 
         </div>
     </div>
+
     <div class="row">
         @include('share.imput',['class'=>'col', 'name'=>'Email', 'label'=>'Email', 'value'=>$personne->email ?? ''])
         @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
-
+        @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$UtilisateursEnregistres->role ?? ''])
     </div>
 
     <button class="btn btn-primary">
-        @if ($Surveillants->exists)
+        @if ($Directeurs->exists)
             Modifier
         @else
             Créer

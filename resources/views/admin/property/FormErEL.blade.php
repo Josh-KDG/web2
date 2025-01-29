@@ -15,7 +15,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Classe</th>
-            <th>INE</th>
+            <th>Mail</th>
             <th>Date de naissance</th>
             <th>Sexe</th>
             <th>Actions</th>

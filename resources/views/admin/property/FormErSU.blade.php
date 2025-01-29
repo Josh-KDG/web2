@@ -15,8 +15,8 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Bureau</th>
+            <th>Rôle</th>
             <th>Email</th>
-            <th>Mot de passe</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,10 +24,11 @@
         @foreach ($Surveillants as $Surveillant)
         <tr>
             <td>{{ $Surveillant->id }}</td>
-            <td>{{ $Surveillant->bureau }}</td>
             <td>{{ $Surveillant->utilisateurEnregistre->personne->nom }}</td>
             <td>{{ $Surveillant->utilisateurEnregistre->personne->prenom }}</td>
-            <td>{{ $Surveillant->utilisateurEnregistre->email }}</td>
+            <td>{{ $Surveillant->bureau }}</td>
+            <td>{{ $Surveillant->utilisateurEnregistre->role }}</td>
+            <td>{{ $Surveillant->utilisateurEnregistre->Email }}</td>
             <td>
                 <a href="{{ route('admin.Surveillant.edit', $Surveillant->id) }}" class="btn btn-warning">Modifier</a>
                 <form action="{{ route('admin.Surveillant.destroy', $Surveillant->id) }}" method="POST" style="display:inline;">

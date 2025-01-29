@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personne;
 use App\Models\Surveillant;
 use Illuminate\Http\Request;
+use App\Models\UtilisateurEnregistre;
+use App\Http\Requests\SurveillantFormRequest;
 
 class SurveillantController extends Controller
 {
@@ -12,7 +15,7 @@ class SurveillantController extends Controller
      */
     public function index()
     {
-        $Surveillants = Surveillant::with('utilisateursEnregistres.personne')->paginate(10);
+        $Surveillants = Surveillant::with('utilisateurEnregistre.personne')->paginate(10);
 
         return view('admin.property.FormErSU', compact('Surveillants'));
     }
@@ -22,7 +25,7 @@ class SurveillantController extends Controller
      */
     public function create()
     {
-        return view('admin.property.FormDR', [
+        return view('admin.property.FormSU', [
             'Surveillants' => new Surveillant(),
 
         ], );
@@ -31,9 +34,28 @@ class SurveillantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SurveillantFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $personne= Personne::create([
+            'nom'=>$validated['nom'],
+            'prenom'=>$validated['prenom'],
+        ]);
+
+        $utilisateursEnregistres = UtilisateurEnregistre::create([
+            'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+            'Email' => $validated['Email'],
+            'personne_id' => $personne->id,
+            'role' => $validated['role'],
+        ]);
+
+        Surveillant::create([
+            'bureau' => $validated['bureau'],
+            'utilisateur_enregistre_id' => $utilisateursEnregistres->id,
+        ]);
+
+        return redirect()->route('admin.Surveillant.index')->with('success', 'Le surveillant a été ajouté avec succès.');
     }
 
     /**

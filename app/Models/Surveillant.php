@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Surveillant extends Model
 {
     use HasFactory;
-    protected $fillable = ['bureau','utilisateurs_enregistres_id'];
+    protected $fillable = ['bureau','utilisateur_enregistre_id'];
 
     public function utilisateurEnregistre()
     {
-        return $this->belongsTo(UtilisateurEnregistre::class, 'UtilisateurEnregistre');
+        return $this->belongsTo(UtilisateurEnregistre::class, 'utilisateur_enregistre_id');
 
     }
 }

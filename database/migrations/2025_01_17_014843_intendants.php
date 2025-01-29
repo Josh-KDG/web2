@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('intendants', function (Blueprint $table) {
             $table->id();
             $table->integer('bureau');
-            $table->unsignedBigInteger('utilisateurs_enregistres_id');
-            $table->foreign('utilisateurs_enregistres_id')->references('id')->on('utilisateurs_enregistres')->onDelete('cascade');
+            $table->unsignedBigInteger('utilisateur_enregistre_id');
+            $table->foreign('utilisateur_enregistre_id')->references('id')->on('utilisateurs_enregistres')->onDelete('cascade');
             $table->timestamps();
         });
     }

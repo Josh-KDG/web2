@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Directeur extends Model
 {
     use HasFactory;
-    protected $fillable = ['utilisateurs_enregistres_id'];
+    protected $fillable = ['utilisateur_enregistre_id'];
 
     public function utilisateurEnregistre()
     {
-        return $this->belongsTo(UtilisateurEnregistre::class);
+        return $this->belongsTo(UtilisateurEnregistre::class, 'utilisateur_enregistre_id');
     }
 }

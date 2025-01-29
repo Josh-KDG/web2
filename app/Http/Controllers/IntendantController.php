@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personne;
 use App\Models\Intendant;
 use Illuminate\Http\Request;
+use App\Models\UtilisateurEnregistre;
+use App\Http\Requests\IntendantFormRequest;
 
 class IntendantController extends Controller
 {
@@ -12,8 +15,7 @@ class IntendantController extends Controller
      */
     public function index()
     {
-
-            $Intendants = Intendant::with('utilisateursEnregistres.personne')->paginate(10);
+            $Intendants = Intendant::with('utilisateurEnregistre.personne')->paginate(10);
 
             return view('admin.property.FormErIN', compact('Intendants'));
     }
@@ -32,10 +34,30 @@ class IntendantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+        public function store(IntendantFormRequest $request)
+        {
+            $validated = $request->validated();
+
+            $personne= Personne::create([
+                'nom'=>$validated['nom'],
+                'prenom'=>$validated['prenom'],
+            ]);
+
+            $utilisateursEnregistres = UtilisateurEnregistre::create([
+                'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
+                'Email' => $validated['Email'],
+                'personne_id' => $personne->id,
+                'role' => $validated['role'],
+            ]);
+
+            Intendant::create([
+                'bureau' => $validated['bureau'],
+                'utilisateur_enregistre_id' => $utilisateursEnregistres->id,
+            ]);
+
+            return redirect()->route('admin.Secretaire.index')->with('success', 'Le secrétaire a été ajouté avec succès.');
+        }
+
 
     /**
      * Display the specified resource.
@@ -48,9 +70,13 @@ class IntendantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $Intendants = Intendant::findOrFail($id);// 1. Récupérer l'élève par son ID.
+        $UtilisateursEnregistres = $Intendants->UtilisateursEnregistres;// 2. Charger les informations d'utilisateur enregistrées liées à cet élève.
+        $UtilisateursEnregistres = UtilisateurEnregistre::findOrFail($id);// 3. Rechercher l'utilisateur enregistré par son ID.
+        $personne = $UtilisateursEnregistres->personne;// 4. Charger les informations de la personne liée à cet utilisateur enregistré.
+        return view('admin.property.FormSE', compact('Secretaires','UtilisateursEnregistres', 'personne'));
     }
 
     /**

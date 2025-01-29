@@ -39,45 +39,22 @@ class SecretaireController extends Controller
         {
             $validated = $request->validated();
 
-
             $personne= Personne::create([
                 'nom'=>$validated['nom'],
                 'prenom'=>$validated['prenom'],
             ]);
 
-            $utilisateursEnregistres= UtilisateurEnregistre::create([
+            $utilisateursEnregistres = UtilisateurEnregistre::create([
                 'Mot_de_passe' => bcrypt($validated['Mot_de_passe']),
-                'Email'=>$validated['Email'],
-                'personne_id'=>$personne->id,
+                'Email' => $validated['Email'],
+                'personne_id' => $personne->id,
                 'role' => $validated['role'],
-
             ]);
 
             Secretaire::create([
                 'bureau' => $validated['bureau'],
-                'utilisateurs_enregistres_id' => $utilisateursEnregistres->id,
+                'utilisateur_enregistre_id' => $utilisateursEnregistres->id,
             ]);
-
-           /* $validated = $request->validated(); // Récupère les données validées
-            // Création de la personne
-            $personne = Personne::create([
-                'nom' => $validated['utilisateurs_enregistres']['personne']['nom'],
-                'prenom' => $validated['utilisateurs_enregistres']['personne']['prenom'],
-            ]);
-
-            // Création de l'utilisateur enregistré (associé à la personne)
-            $utilisateursEnregistres = UtilisateurEnregistre::create([
-                'Email' => $validated['utilisateurs_enregistres']['Email'],
-                'Mot_de_passe' => bcrypt($validated['utilisateurs_enregistres']['Mot_de_passe']),
-                'personne_id' => $personne->id,
-                'role' => $validated['utilisateurs_enregistres']['role'], // Ajoute le rôle de l'utilisateur
-            ]);
-
-            // Création du secrétaire
-            Secretaire::create([
-                'bureau' => $validated['Secretaire']['bureau'],
-                'utilisateurs_enregistres_id' => $utilisateursEnregistres->id, // L'ID de l'utilisateur enregistré
-            ]);*/
 
             return redirect()->route('admin.Secretaire.index')->with('success', 'Le secrétaire a été ajouté avec succès.');
         }

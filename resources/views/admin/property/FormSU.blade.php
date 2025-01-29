@@ -5,7 +5,7 @@
 @section('contenuEleve')
 
 <h1>@yield('title')</h1>
-<form action="{{ route($Surveillants->exists ? 'admin.Parent.update' : 'admin.Parent.store', $Directeurs)}}" method="POST">
+<form action="{{ route($Surveillants->exists ? 'admin.Surveillant.update' : 'admin.Surveillant.store', $Surveillants)}}" method="POST">
     @csrf
     @method($Surveillants->exists ? 'put' : 'post')
 
@@ -17,13 +17,17 @@
         </div>
     </div>
     <div class="row">
+             @include('share.imput',['class'=>'col', 'name'=>'role', 'label'=>'Role', 'value'=>$UtilisateursEnregistres->role ?? ''])
+             @include('share.imput',['class'=>'col', 'name'=>'bureau', 'label'=>'Bureau', 'value'=>$Surveillant->bureau ?? ''])
+    </div>
+    <div class="row">
         @include('share.imput',['class'=>'col', 'name'=>'Email', 'label'=>'Email', 'value'=>$personne->email ?? ''])
         @include('share.imput',['class'=>'col', 'name'=>'Mot_de_passe', 'label'=>'Mot de passe', 'value'=>$UtilisateursEnregistres->Mot_de_passe ?? ''])
 
     </div>
 
     <button class="btn btn-primary">
-        @if ($Directeurs->exists)
+        @if ($Surveillants->exists)
             Modifier
         @else
             Créer

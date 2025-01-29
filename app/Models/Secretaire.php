@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Secretaire extends Model
 {
     use HasFactory;
-    protected $fillable = ['bureau','utilisateurs_enregistres_id'];
+    protected $fillable = ['bureau','utilisateur_enregistre_id'];
 
     public function utilisateurEnregistre()
     {
-        return $this->belongsTo(UtilisateurEnregistre::class, 'utilisateurs_enregistres_id');
+        return $this->belongsTo(UtilisateurEnregistre::class, 'utilisateur_enregistre_id');
 
     }
 }

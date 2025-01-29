@@ -19,7 +19,7 @@
 
          <div class="row">
              @include('share.imput',['class'=>'col', 'name'=>'bureau', 'label'=>'Bureau', 'value'=>$Secretaires->bureau ?? ''])
-             @include('share.imput',['class'=>'col', 'name'=>'email', 'label'=>'Email', 'value'=>$UtilisateursEnregistres->email ?? ''])
+             @include('share.imput',['class'=>'col', 'name'=>'Email', 'label'=>'Email', 'value'=>$personne->Email ?? ''])
          </div>
 
          <div class="row">
@@ -28,11 +28,11 @@
          </div>
 
          <button class="btn btn-primary">
-             @if ($Secretaires->exists)
-                 Modifier
-             @else
-                 Créer
-             @endif
+            @if ($Secretaires->exists)
+                Modifier
+            @else
+                Créer
+            @endif
          </button>
      </form>
      @endsection

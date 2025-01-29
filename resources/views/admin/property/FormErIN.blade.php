@@ -15,8 +15,8 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Bureau</th>
+            <th>Rôle</th>
             <th>Email</th>
-            <th>Mot de passe</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -26,10 +26,12 @@
             <td>{{ $Intendant->id }}</td>
             <td>{{ $Intendant->utilisateurEnregistre->personne->nom }}</td>
             <td>{{ $Intendant->utilisateurEnregistre->personne->prenom }}</td>
-            <td>{{ $Intendant->utilisateurEnregistre->email }}</td>
+            <td>{{ $Intendant->bureau }}</td>
+            <td>{{ $Intendant->utilisateurEnregistre->role }}</td>
+            <td>{{ $Intendant->utilisateurEnregistre->Email }}</td>
             <td>
-                <a href="{{ route('admin.Directeur.edit', $Intendant->id) }}" class="btn btn-warning">Modifier</a>
-                <form action="{{ route('admin.Directeur.destroy', $Intendant->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.Intendant.edit', $Surveillant->id) }}" class="btn btn-warning">Modifier</a>
+                <form action="{{ route('admin.Intendant.destroy', $Surveillant->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>

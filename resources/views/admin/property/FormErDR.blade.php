@@ -1,6 +1,6 @@
 @extends('layouts.base.baseEleve')
 
-@section('title', "Tous les directeurs enregistrés")
+@section('title', "Tous les Directeurs enregistrés")
 
 @section('contenuEleve')
 <div class="d-flex justify-content-between align-items-center">
@@ -14,8 +14,8 @@
             <th>Identifiant</th>
             <th>Nom</th>
             <th>Prénom</th>
+            <th>Rôle</th>
             <th>Email</th>
-            <th>Mot de passe</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,10 +25,11 @@
             <td>{{ $Directeur->id }}</td>
             <td>{{ $Directeur->utilisateurEnregistre->personne->nom }}</td>
             <td>{{ $Directeur->utilisateurEnregistre->personne->prenom }}</td>
-            <td>{{ $Directeur->utilisateurEnregistre->email }}</td>
+            <td>{{ $Directeur->utilisateurEnregistre->role }}</td>
+            <td>{{ $Directeur->utilisateurEnregistre->Email }}</td>
             <td>
-                <a href="{{ route('admin.Directeur.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
-                <form action="{{ route('admin.Directeur.destroy', $eleve->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.Directeur.edit', $Directeur->id) }}" class="btn btn-warning">Modifier</a>
+                <form action="{{ route('admin.Directeur.destroy', $Directeur->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>
