@@ -30,8 +30,8 @@
             <td>{{ $Intendant->utilisateurEnregistre->role }}</td>
             <td>{{ $Intendant->utilisateurEnregistre->Email }}</td>
             <td>
-                <a href="{{ route('admin.Intendant.edit', $Surveillant->id) }}" class="btn btn-warning">Modifier</a>
-                <form action="{{ route('admin.Intendant.destroy', $Surveillant->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.Intendant.edit', $Intendant->id) }}" class="btn btn-warning">Modifier</a>
+                <form action="{{ route('admin.Intendant.destroy', $Intendant->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>

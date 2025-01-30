@@ -73,64 +73,15 @@ class UtilisateurEnregistre extends Model implements Authenticatable
     {
         return $this->hasOne(Intendant::class);
     }
-}
 
-/*
-// app/Models/UtilisateurEnregistre.php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class UtilisateurEnregistre extends Model
-{
-    use HasFactory;
-    protected $table = 'utilisateurs_enregistres';
-    protected $fillable = ['mot_de_passe', 'email','personne_id', 'role'];
-
-    protected $hidden = [
-        'Mot_de_passe', 'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    // Si vous avez un attribut "email" personnalisé
-    public function getEmailForVerification()
-    {
-        return $this->Email;
-    }
-
-    // Relations
-    public function personne()
-    {
-        return $this->belongsTo(Personne::class);
-    }
-    // Relation avec les rôles via la table pivot role_user
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    // Lien avec les messages envoyés ou reçus
-    public function messagesEnvoyes()
+    public function sentMessages()
     {
         return $this->hasMany(Message::class, 'sender_id');
     }
 
-    public function messagesRecus()
+    public function receivedMessages()
     {
         return $this->hasMany(Message::class, 'receiver_id');
     }
 
-    // Lien avec les réclamations
-    public function reclamations()
-    {
-        return $this->hasMany(Reclamation::class);
-    }
-
 }
-
-*/
