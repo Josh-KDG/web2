@@ -8,16 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 // Message.php
 class Message extends Model
 {
-    protected $fillable = ['sender_id', 'receiver_id', 'content', 'is_broadcast'];
+    protected $fillable = ['sender_id', 'receiver_id', 'conversation_id', 'read', 'type', 'body', /*'is_broadcast'*/];
 
-    public function sender()
+
+
+
+    public function conversation()
     {
-        return $this->belongsTo(User::class, 'sender_id');
+        return $this->belongsTo(Conversation::class);
     }
 
-    public function receiver()
+    public function UtilisateurEnregistre()
     {
-        return $this->belongsTo(User::class, 'receiver_id');
+        return $this->belongsTo(UtilisateurEnregistre::class, 'sender_id');
     }
 }
 

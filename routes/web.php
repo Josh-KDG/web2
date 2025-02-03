@@ -1,9 +1,10 @@
 <?php
 
+use App\Livewire\Chat\Main;
+use App\Livewire\Chat\CreateChat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\ParentController;
-use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\DirecteurController;
@@ -22,6 +23,28 @@ use App\Http\Controllers\SurveillantController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/users', CreateChat::class)->name('users');
+Route::get('/chat{key?}',Main::class)->name('chat');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+/*
 Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::resource('property', PropertyController::class)->except(['show']);
@@ -33,6 +56,4 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('Intendant', IntendantController::class)->except(['show']);
     Route::resource('Surveillant',SurveillantController::class)->except(['show']);
 });
-// web.php
-Route::get('/messages', [MessageController::class, 'index']);
-Route::post('/messages/send', [MessageController::class, 'sendMessage']);
+*/

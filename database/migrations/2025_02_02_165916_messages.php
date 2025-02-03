@@ -14,10 +14,14 @@ return new class extends Migration
         // Migration pour créer la table messages
             Schema::create('messages', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('Conversation_id')->constrained('utilisateurs_enregistres');
                 $table->foreignId('sender_id')->constrained('users');
-                $table->foreignId('receiver_id')->nullable()->constrained('users');
+                $table->foreignId('receiver_id')->nullable()->constrained('utilisateurs_enregistres');
                 $table->text('content');
-                $table->boolean('is_broadcast')->default(false);  // Indicateur de diffusion
+                //$table->boolean('is_broadcast')->default(false);  // Indicateur de diffusion
+                $table->boolean('read')->default(0)->nulable();  // Indicateur de diffusion
+                $table->text('body')->nulable();  // Indicateur de diffusion
+                $table->string('type')->nulable();  // Indicateur de diffusion
                 $table->timestamps();
             });
 
