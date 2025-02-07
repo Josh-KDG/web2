@@ -26,10 +26,32 @@
         </div>
     </div>
     <div class="chatbox_body">
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate rem perferendis, placeat maiores at ex minus recusandae facilis dolores rerum culpa, esse aspernatur officia soluta possimus est quidem, molestias a.
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Et in, consequuntur consectetur quam laboriosam autem sint cupiditate corporis deleniti deserunt hic enim, molestiae modi beatae ducimus nisi placeat sapiente magnam.
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente molestias error quos dignissimos repudiandae nulla repellendus corporis temporibus maiores sed, provident quia quam? Aliquam similique corrupti accusantium, explicabo obcaecati placeat!
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi deserunt provident suscipit expedita est, soluta saepe aliquid perspiciatis itaque tenetur rerum qui consectetur? Labore quod quae eaque asperiores, exercitationem est.
+        <div class="msg_body msg_body_receiver">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod ea cupiditate vel culpa rerum perspiciatis minima doloremque deserunt, esse doloribus corrupti ipsam quam, exercitationem eveniet nostrum eligendi modi fugit!
+            <div class="msg_body_footer">
+
+                <div class="date">
+                    5 houres ago
+                </div>
+                <div class="read">
+                <i class="bi bi-check"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="msg_body msg_body_me">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod ea cupiditate vel culpa rerum perspiciatis minima doloremque deserunt, esse doloribus corrupti ipsam quam, exercitationem eveniet nostrum eligendi modi fugit!
+            <div class="msg_body_footer">
+
+                <div class="date">
+                    5 houres ago
+                </div>
+                <div class="read">
+                <i class="bi bi-check"></i>
+
+                </div>
+            </div>
+        </div>
     </div>
     <div class="chatbox_footer">
         footer
