@@ -1,6 +1,17 @@
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
-    <div class="chatbox_footer">
+    {{-- The whole world belongs to you. --}}
 
-    </div>
+
+        <form wire:submit.prevent='sendMessage' action="">
+            <div class="chatbox_footer">
+            <div class="custom_form_group">
+
+                <input wire:model='body' type="text" id="sendMessage" class="control" placeholder="Write message">
+            <button type="submit" class="submit">Send</button>
+            </div>
+
+            </div>
+        </form>
+
+
 </div>

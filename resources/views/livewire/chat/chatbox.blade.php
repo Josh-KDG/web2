@@ -52,8 +52,19 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod ea cupidita
                 </div>
             </div>
         </div>
+        <div class="msg_body msg_body_me">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod ea cupiditate vel culpa rerum perspiciatis minima doloremque deserunt, esse doloribus corrupti ipsam quam, exercitationem eveniet nostrum eligendi modi fugit!
+            <div class="msg_body_footer">
+
+                <div class="date">
+                    5 houres ago
+                </div>
+                <div class="read">
+                <i class="bi bi-check"></i>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="chatbox_footer">
-        footer
-    </div>
+
 </div>
