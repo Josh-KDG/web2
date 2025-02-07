@@ -12,7 +12,7 @@ class CreateChat extends Component
 {
     public $users;
 
-    public function mount()
+    /*public function mount()
     {
         $this->users = User::all(); // Par exemple, obtenir tous les utilisateurs
     }
@@ -20,5 +20,5 @@ class CreateChat extends Component
     public function render()
     {
         return view('livewire.chat.create-chat');
-    }
+    }*/
 }
